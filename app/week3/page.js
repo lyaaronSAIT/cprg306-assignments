@@ -1,11 +1,11 @@
-import StudentInfo from "../StudentInfo";
+import ItemList from "./item-list";
 import Link from 'next/link';
 
-export default function Shoppinglist() {
+export default function Page() {
     return (
         <main>
-            <h1>My Shopping List</h1>
-            <StudentInfo></StudentInfo>
+            <h1>Shopping List</h1>
+            <ItemList />
             <p>
                 <Link href = '/'>Homepage</Link>
             </p>
