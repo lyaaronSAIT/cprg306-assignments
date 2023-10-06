@@ -74,6 +74,71 @@ export default function ItemList() {
       };
 
       return (
-            <Item name = {item1.name} category = {item1.category} quantity = {item1.quantity} />
+        <>
+            <Item   name = {item1.name} 
+                    category = {item1.category} 
+                    quantity = {item1.quantity}
+            />
+
+            <Item   name = {item2.name}
+                    category = {item2.category} 
+                    quantity = {item2.quantity}
+            />
+
+            <Item   name = {item3.name}
+                    category = {item3.category} 
+                    quantity = {item3.quantity}
+            />
+
+            <Item   name = {item4.name}
+                    category = {item4.category} 
+                    quantity = {item4.quantity}
+            />
+
+            <Item   name = {item4.name}
+                    category = {item4.category} 
+                    quantity = {item4.quantity}
+            />
+
+            <Item   name = {item5.name}
+                    category = {item5.category} 
+                    quantity = {item5.quantity}
+            />
+
+            <Item   name = {item6.name}
+                    category = {item6.category} 
+                    quantity = {item6.quantity}
+            />
+
+            <Item   name = {item7.name}
+                    category = {item7.category} 
+                    quantity = {item7.quantity}
+            />
+
+            <Item   name = {item8.name}
+                    category = {item8.category} 
+                    quantity = {item8.quantity}
+            />
+
+            <Item   name = {item9.name}
+                    category = {item9.category} 
+                    quantity = {item9.quantity}
+            />
+
+            <Item   name = {item10.name}
+                    category = {item10.category} 
+                    quantity = {item10.quantity}
+            />
+
+            <Item   name = {item11.name}
+                    category = {item11.category} 
+                    quantity = {item11.quantity}
+            />
+
+            <Item   name = {item12.name}
+                    category = {item12.category} 
+                    quantity = {item12.quantity}
+            />
+        </>
       );
 }

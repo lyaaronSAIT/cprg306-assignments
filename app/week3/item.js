@@ -2,8 +2,8 @@ export default function Item({name, quantity, category}) {
     return(
         <div>
             <div>
-                <p>{name}</p>
-                <p>Buy {quantity} in {category}</p>
+                <p>Item name: {name}</p>
+                <p>Buy {quantity} of them in the {category} aisle.</p>
             </div>
         </div>
     );
