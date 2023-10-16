@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function NewItem() {
+export default function newItem() {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState("Produce");
@@ -18,7 +18,7 @@ export default function NewItem() {
 
         console.log(newItem); // log the item object to the console
 
-        alert('Item name: "${name}", quantity: "${quantity}", category: ${category}.'); // display info
+        alert(`Item name: "${name}", quantity: "${quantity}", category: ${category}.`); // display info
 
         setName("");
         setQuantity(1);
@@ -39,34 +39,39 @@ export default function NewItem() {
     };
 
     return (
-        <main>
-                <div>
-                <h1>Add New Item</h1>
+        <main className="flex justify-center items-center h-screen bg-gray-500">
+                <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
+                <h1 className="text-3xl text-black font-bold mb-8 text-center">
+                    Add New Item
+                </h1>
                     <form onSubmit={handleSubmit}>
-                        <label>
-                            <span>Item Name </span>
+                        <label className="block mb-4">
+                            <span className="text-black">Item Name </span>
                             <input 
                                 required onChange={nameChange}
                                 value={name}
+                                className="bg-gray-200 text-black focus:bg-gray-200 focus:outline-none mt-1 p-1 rounded-xl"
                             ></input>
                         </label>
 
-                        <label>
-                            <span> Quantity </span>
-                            <select
+                        <label className="block mb-4">
+                            <span className="text-black"> Quantity </span>
+                            <input
                                 required onChange={quantityChange}
                                 value={quantity}
                                 type="number"
                                 min={1}
                                 max={99}
-                            ></select>
+                                className="bg-gray-200 text-black focus:bg-gray-200 focus:outline-none mt-1 p-1 rounded-xl"
+                            ></input>
                         </label>
 
-                        <label>
-                            <span> Category </span>
+                        <label className="block mb-4">
+                            <span className="text-black"> Category </span>
                             <select 
                                 required onChange={categoryChange}
-                                value={category}>
+                                value={category}
+                                className="bg-gray-200 text-black focus:bg-gray-200 focus:outline-none mt-1 p-1 rounded-xl">
 
                                 <option value="Produce">Produce</option>
                                 <option value="Dairy">Dairy</option>
@@ -82,8 +87,8 @@ export default function NewItem() {
                             </select>
                         </label>
 
-                        <button type="submit">
-                             Submit Item 
+                        <button type="submit" className="text-white bg-violet-700 rounded-xl py-1 focus:outline-none w-full hover:bg-violet-900">
+                             Submit
                         </button>
                     </form>
                 </div>
