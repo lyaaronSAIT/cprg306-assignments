@@ -1,7 +1,8 @@
 export default function Item({name, quantity, category, onSelect}) {
     return(
         <div className="space-y-10">
-            <liv onClick={ onSelect }>
+            <liv className="cursor-pointer" 
+            onClick={ onSelect }>
                 <ul>
                     <li className="p-2 m-4 max-w-sm bg-slate-900">
                         <p className="flex justify-center font-bold text-violet-700">Item name: {name}</p>

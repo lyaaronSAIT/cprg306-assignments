@@ -17,12 +17,23 @@ export default function Page() {
         });
     }
 
+    function handleItemSelect(item) {
+        const cleanedItemName = item.name.trim().toLowerCase();
+        setSelectedItemName(cleanedItemName);
+    }
+
     return (
         <main>
             <h1 className = "flex justify-center text-5xl font-bold m-3 text-violet-700">Shopping List</h1>
-            <NewItem onAddItem={handleAddItem}></NewItem>
-            <ItemList items={items}/>
-            <MealIdeas ingredients={selectedItemName}></MealIdeas>
+            <div className="flex">
+                <div className="w-full sm:w-1/2 p-4">
+                    <NewItem onAddItem={handleAddItem}></NewItem>
+                    <ItemList items={items} onItemSelect={handleItemSelect} />
+                </div>
+                <div className="w-full sm:w-1/2 p-4">
+                    <MealIdeas ingredients={selectedItemName}></MealIdeas>
+                </div>
+            </div>
             <p className="flex justify-end">
                 <Link href = '/'>Homepage</Link>
             </p>
