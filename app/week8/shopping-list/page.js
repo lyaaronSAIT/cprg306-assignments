@@ -1,5 +1,6 @@
 "use client";
 import ItemList from "./item-list";
+import { useUserAuth } from "../_utils/auth-context";
 import Link from 'next/link';
 import NewItem from './new-items';
 import itemsData from './items.json'
@@ -10,6 +11,17 @@ export default function Page() {
 
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItemName] = useState("");
+
+    const { user } = useUserAuth();
+
+    if (!user) {
+        return (
+            <div>
+            <p>You are not logged in. Please log in to view the shopping list.</p>
+                <Link href="app\week8\page.js">Go to Landing Page</Link>
+            </div>
+        );
+    }
 
     function handleAddItem(newItem) {
         setItems((prevItems) => {
