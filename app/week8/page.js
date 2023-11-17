@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { useUserAuth } from "./_utils/auth-context";
  
@@ -24,16 +25,20 @@ const LandingPage = () => {
         <div>
             {user ? (
                 <div>
-                <p>
-                    Welcome, {user.displayName} ({user.email})
-                </p>
-                <button onClick={handleFirebaseSignOut}>Logout</button>
-                <a href="./shopping-list/page">Go to Shopping List</a>
+                    <p>
+                        Welcome, {user.displayName} ({user.email})
+                    </p>
+                    <div>
+                        <button className="text-white bg-violet-600 p-2 rounded-lg m-4" onClick={handleFirebaseSignOut}>Logout</button>
+                    </div>
+                    <div>
+                        <a className="text-white bg-violet-600 p-2 rounded-lg m-4" href="./week8/shopping-list">Go to Shopping List</a>
+                    </div>
                 </div>
             ) : (
                 <div>
                 <p>Please log in to continue:</p>
-                <button onClick={handleGitHubSignIn}>Login with GitHub</button>
+                <button className="text-white bg-violet-600 p-2 rounded-lg m-4" onClick={handleGitHubSignIn}>Login with GitHub</button>
                 </div>
             )}
         </div>

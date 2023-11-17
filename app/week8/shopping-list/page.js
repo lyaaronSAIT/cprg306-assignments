@@ -5,20 +5,28 @@ import Link from 'next/link';
 import NewItem from './new-items';
 import itemsData from './items.json'
 import MealIdeas from './meal-ideas';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Page() {
 
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItemName] = useState("");
-
+    const [loading, setLoading] = useState(true);
     const { user } = useUserAuth();
+
+    useEffect(() => {
+        setLoading(false); // Set loading to false once user authentication information is available
+    }, [user]);
+
+    if (loading) {
+        return <p>Loading...</p>; // Show a loading state until authentication information is available
+    }
 
     if (!user) {
         return (
             <div>
-            <p>You are not logged in. Please log in to view the shopping list.</p>
-                <Link href="app\week8\page.js">Go to Landing Page</Link>
+                <p className="p-4">You are not logged in. Please log in to view the shopping list.</p>
+                <a className="text-white bg-violet-600 p-2 rounded-lg m-4" href="../week8">Go to Landing Page</a>
             </div>
         );
     }
