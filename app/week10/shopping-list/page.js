@@ -3,23 +3,29 @@ import ItemList from "./item-list";
 import { useUserAuth } from "../_utils/auth-context";
 import Link from 'next/link';
 import NewItem from './new-items';
-import itemsData from './items.json'
 import MealIdeas from './meal-ideas';
 import { useState, useEffect } from "react";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 export default function Page() {
 
     const [items, setItems] = useState(itemsData);
     const [selectedItemName, setSelectedItemName] = useState("");
-    const [loading, setLoading] = useState(true);
     const { user } = useUserAuth();
 
     useEffect(() => {
-        setLoading(false); // Set loading to false once user authentication information is available
-    }, [user]);
-
-    if (loading) {
-        return <p>Loading...</p>; // Show a loading state until authentication information is available
+        loadItems();
+    }, []);
+    
+    async function loadItems() {
+        try {
+            if (user) {
+            const items = await getItems(user.uid);
+            setItems(items);
+            }
+        } catch (error) {
+            console.error("Error loading items:", error);
+        }
     }
 
     if (!user) {
@@ -32,8 +38,13 @@ export default function Page() {
     }
 
     function handleAddItem(newItem) {
-        setItems((prevItems) => {
-            return[...prevItems, newItem];
+        addItem(user.uid, newItem)
+        .then((itemId) => {
+          const updatedItem = { ...newItem, id: itemId };
+          setItems((prevItems) => [...prevItems, updatedItem]);
+        })
+        .catch((error) => {
+          console.error("Error adding item:", error);
         });
     }
 
